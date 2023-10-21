@@ -31,12 +31,3 @@ def generate_graph(n):
         adjacency_matrix[i][i] = 0
 
     return adjacency_matrix.tolist()
-
-
-# Example usage:
-NUM_NODES = 20  # Change this to the number of nodes you want.
-GRAPH = generate_graph(NUM_NODES)
-
-# Print the generated graph as a 2D array.
-for row in GRAPH:
-    print(row)
