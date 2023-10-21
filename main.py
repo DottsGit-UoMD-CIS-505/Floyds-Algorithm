@@ -59,6 +59,7 @@ with open("output.txt", "w", encoding="utf-8") as file:
     # Printing out the list of runtimes and their averages for the nodecounts
     previous_node_count = len(W_List[0])
     cycle_total_runtime = 0
+    i = 0
     for i, runtime in enumerate(runtimes):
         if previous_node_count != len(W_List[i]):
             log_output(
