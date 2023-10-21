@@ -1,4 +1,8 @@
-from math import inf
+"""
+Computes floyds algorithm with a given weight graph
+
+Author: Nicholas Butzke
+"""
 
 
 def floyd2(n: int, W: list[list[int]]):

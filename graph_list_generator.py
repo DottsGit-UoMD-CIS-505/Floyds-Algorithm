@@ -10,6 +10,9 @@ from graph_generator import generate_graph
 def generate_graph_list(graph_lengths, graph_quantity: int = 1):
     """Calls graph generator multiple times to generate multiple graphs.
     Also uses custom graphs."""
+
+    # Custom Graphs
+    # w_1 is the graph from the HW
     w_1: list[list[int]] = [
         [0, 4, inf, inf, inf, 10, inf],
         [3, 0, inf, 18, inf, inf, inf],
@@ -20,6 +23,7 @@ def generate_graph_list(graph_lengths, graph_quantity: int = 1):
         [inf, inf, inf, 8, inf, inf, 0],
     ]
 
+    # w_2 is the graph from the HW that forces it into a long path
     w_2: list[list[int]] = [
         [0, 4, inf, inf, inf, 10, inf],
         [3, 0, inf, 18, inf, inf, inf],
@@ -30,9 +34,12 @@ def generate_graph_list(graph_lengths, graph_quantity: int = 1):
         [inf, inf, inf, 8, inf, inf, 0],
     ]
 
+    # Add the custom graphs to the graph list
     graph_list: list[list[list[int]]] = []
     graph_list.append(w_1)
     graph_list.append(w_2)
+
+    # Generate new graphs with the given parameters and add them to the list
     for n in graph_lengths:
         for _ in range(graph_quantity):
             graph_list.append(generate_graph(n))

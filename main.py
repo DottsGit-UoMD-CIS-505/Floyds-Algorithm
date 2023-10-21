@@ -17,7 +17,6 @@ P: list[list[int]] = [
 """
 import time
 
-from networkx import shortest_path
 from floyds_algorithm import floyd2
 from shortest_path import path
 from graph_list_generator import generate_graph_list
@@ -30,13 +29,16 @@ W_List = generate_graph_list(GRAPH_VERTICES_QUANTITIES, GRAPH_QUANTITIES)
 with open("output.txt", "w", encoding="utf-8") as file:
     runtimes = []
     for W in W_List:
+        # Compute the runtime around running Floyd's algorithm
         start_time = time.time()
         D, P = floyd2(len(W), W)
         end_time = time.time()
 
+        # Keeping the list of runtimes to print them all out later for easier viewing
         log_output(f"Runtime: {end_time - start_time}s", file)
         runtimes.append(end_time - start_time)
 
+        # Printing out the matrices
         log_output("D Matrix:", file)
         for row in D:
             for element in row:
@@ -53,6 +55,8 @@ with open("output.txt", "w", encoding="utf-8") as file:
         log_output("-------------------------------------", file)
         if W == W_List[0]:
             P_Classic = P
+
+    # Printing out the list of runtimes and their averages for the nodecounts
     previous_node_count = len(W_List[0])
     cycle_total_runtime = 0
     for i, runtime in enumerate(runtimes):
