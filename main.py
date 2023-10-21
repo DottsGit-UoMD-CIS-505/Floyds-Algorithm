@@ -75,7 +75,7 @@ with open("output.txt", "w", encoding="utf-8") as file:
 
     START = 7
     FINISH = 3
-    log_output(f"Optimal path from v{START} to v{FINISH}:", file)
+    log_output(f"Optimal path from v{START} to v{FINISH} in the HW graph:", file)
     log_output(f"v{START}", file, " -> ")
     path(P_Classic, START - 1, FINISH - 1, file)
     log_output(f"v{FINISH}", file, "")
