@@ -1,31 +1,10 @@
-from floyds_algorithm import floyd2
-from shortest_path import path
-from math import inf
-
-W: list[list[int]] = [
-    [0, 4, inf, inf, inf, 10, inf],
-    [3, 0, inf, 18, inf, inf, inf],
-    [inf, 6, 0, inf, inf, inf, inf],
-    [inf, 5, 15, 0, 2, 19, 5],
-    [inf, inf, 12, 1, 0, inf, inf],
-    [inf, inf, inf, inf, inf, 0, 10],
-    [inf, inf, inf, 8, inf, inf, 0],
-]
-
-D, P = floyd2(7, W)
-print("D Matrix:")
-for row in D:
-    for element in row:
-        print(f"{element:2}", end=" ")
-    print()
-print("-------------------------------------")
-print("P Matrix:")
-for row in P:
-    for element in row:
-        print(f"{element:2}", end=" ")
-    print()
-
 """
+Main wrapper to test various graphs.
+Will generate graphs and print them.
+Is able to find the optimal paths in a given graph between 2 vertices.
+
+Author: Nicholas Butzke
+
 P: list[list[int]] = [
     [0, 0, 5, 2, 4, 0, 6],
     [0, 0, 5, 0, 4, 1, 4],
@@ -37,9 +16,36 @@ P: list[list[int]] = [
 ]
 """
 
-start = 7
-finish = 3
-print(f"Optimal path from v{start} to v{finish}:")
-print(f"v{start}", end=" -> ")
-path(P, start - 1, finish - 1)
-print(f"v{finish}", end="")
+from floyds_algorithm import floyd2
+from shortest_path import path
+from graph_list_generator import generate_graph_list
+
+GRAPH_VERTICES_QUANTITIES = [5, 10, 25]
+GRAPH_QUANTITIES = 10
+
+W_List = generate_graph_list(GRAPH_VERTICES_QUANTITIES, GRAPH_QUANTITIES)
+
+for W in W_List:
+    D, P = floyd2(len(W), W)
+    print("D Matrix:")
+    for row in D:
+        for element in row:
+            print(f"{int(element):3}", end=" ")
+        print()
+    print("-------------------------------------")
+    print("P Matrix:")
+    for row in P:
+        for element in row:
+            print(f"{element:3}", end=" ")
+        print()
+    print("-------------------------------------")
+    print("-------------------------------------")
+    if W == W_List[0]:
+        P_Classic = P
+
+START = 7
+FINISH = 3
+print(f"Optimal path from v{START} to v{FINISH}:")
+print(f"v{START}", end=" -> ")
+path(P_Classic, START - 1, FINISH - 1)
+print(f"v{FINISH}", end="")

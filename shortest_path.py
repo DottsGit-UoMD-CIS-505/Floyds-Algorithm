@@ -1,3 +1,10 @@
+"""
+Evaluates the shortest path between two nodes for a given P graph.
+
+Author: Nicholas Butzke
+"""
+
+
 def path(P, q: int, r: int):
     """Print the intermediate vertices on a shortest path from
     one vertex to another vertex in a weighted graph."""
